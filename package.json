@@ -25,6 +25,7 @@
     "pm2:restart": "pm2 restart ecosystem.config.js",
     "pm2:logs": "pm2 logs",
     "pm2:status": "pm2 status",
+    "nginx:pm2": "bash scripts/nginx-pm2-start.sh",
     "deploy": "bash scripts/deploy.sh",
     "deploy:docker": "bash scripts/deploy-docker.sh",
     "release": "bash scripts/release.sh",

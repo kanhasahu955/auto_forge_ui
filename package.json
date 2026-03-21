@@ -8,7 +8,7 @@
     "version:patch": "npm version patch --no-git-tag-version",
     "version:minor": "npm version minor --no-git-tag-version",
     "version:major": "npm version major --no-git-tag-version",
-    "dev": "concurrently -n autoforge,interview-agent -c blue,green \"pnpm --filter AutoForge dev\" \"pnpm --filter interview-agent dev\"",
+    "dev": "ulimit -n 10240 2>/dev/null || true; concurrently -n autoforge,interview-agent -c blue,green \"pnpm --filter AutoForge dev\" \"pnpm --filter interview-agent dev\"",
     "dev:AutoForge": "pnpm --filter AutoForge dev",
     "dev:interview-agent": "pnpm --filter interview-agent dev",
     "dev:all": "pnpm dev",

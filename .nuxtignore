@@ -1,0 +1,7 @@
+# Reduce file watchers during dev (EMFILE)
+**/node_modules
+**/.output
+**/.nuxt
+**/.cache
+**/dist
+**/*.log

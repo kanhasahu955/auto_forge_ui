@@ -3,8 +3,14 @@
 import graphqlLoader from 'vite-plugin-graphql-loader'
 
 export default defineNuxtConfig({
+  typescript: {
+    strict: false,
+  },
   vite: {
     plugins: [graphqlLoader()],
+    optimizeDeps: {
+      exclude: ['lodash-unified'], // Element Plus adds it but it's nested; exclude to avoid "Unresolvable" warning
+    },
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },

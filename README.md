@@ -250,18 +250,31 @@ Create `.env` in the project root (copy from `.env.example` if available):
 
 ## Shared Stack
 
-### UI Components (Element Plus)
+### UI Components (Element Plus – full set)
 
-From `layers/ui` — use directly in templates:
+All Element Plus components are wrapped with an `App` prefix in `layers/ui`. Use them across all apps:
+
+**Basic:** AppButton, AppLink, AppSpace, AppDivider, AppContainer, AppHeader, AppMain, AppAside, AppFooter
+
+**Form:** AppForm, AppFormItem, AppInput, AppInputNumber, AppSelect, AppOption, AppCheckbox, AppCheckboxGroup, AppRadio, AppRadioGroup, AppSwitch, AppSlider, AppDatePicker, AppTimePicker, AppCascader, AppAutocomplete, AppRate, AppUpload
+
+**Data:** AppCard, AppTable, AppTableColumn, AppPagination, AppTag, AppAvatar, AppBadge, AppProgress, AppEmpty, AppImage, AppCollapse, AppCollapseItem, AppTree, AppDescriptions, AppDescriptionsItem, AppCarousel, AppCarouselItem, AppTimeline, AppTimelineItem, AppResult, AppTransfer, AppSkeleton
+
+**Navigation:** AppTabs, AppTabPane, AppMenu, AppMenuItem, AppSubMenu, AppBreadcrumb, AppBreadcrumbItem, AppDropdown, AppDropdownMenu, AppDropdownItem, AppSteps, AppStep, AppBacktop, AppAffix
+
+**Feedback:** AppAlert, AppDialog, AppDrawer, AppTooltip, AppPopover, AppPopconfirm
+
+**Other:** AppConfigProvider, AppScrollbar
 
 ```vue
 <template>
-  <AppCard header="Welcome">
-    <AppButton type="primary">Save</AppButton>
-    <AppInput v-model="name" placeholder="Enter name" />
-    <AppFormItem label="Email">
-      <AppInput v-model="email" />
-    </AppFormItem>
+  <AppCard>
+    <AppForm>
+      <AppFormItem label="Name">
+        <AppInput v-model="name" placeholder="Enter name" />
+      </AppFormItem>
+      <AppButton type="primary">Save</AppButton>
+    </AppForm>
   </AppCard>
 </template>
 ```
@@ -460,6 +473,17 @@ pnpm deploy
 
 **Element Plus styles missing**
 - Base layer includes `@element-plus/nuxt`; no extra config needed
+
+**Interview Agent returns 500**
+- Use the **trailing slash**: `http://localhost:8080/interview-agent/` (not `/interview-agent`)
+- Ensure PM2 is running: `pnpm pm2:status` — both AutoForge and interview-agent should be "online"
+- Restart: `pnpm pm2:restart`
+- Check logs: `pnpm pm2:logs interview-agent`
+
+**EMFILE: too many open files** (when running `pnpm dev`)
+- `pnpm dev` runs both apps; each uses file watchers. The root script sets `ulimit -n 10240` before starting.
+- If you still see errors: run one app at a time (`pnpm dev:AutoForge` or `pnpm dev:interview-agent`).
+- macOS: increase limit permanently: `ulimit -n 65536` in `~/.zshrc`, or use a launchd plist for system-wide limits
 
 **Docker: "permission denied while trying to connect to the docker API"**
 - Ensure **Docker Desktop is running**

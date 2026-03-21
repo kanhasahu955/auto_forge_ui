@@ -1,0 +1,127 @@
+/**
+ * Shared UI component styles - customizable via CSS variables.
+ *
+ * Apps should define these in :root and .dark for theming:
+ *   --app-accent, --app-accent-hover
+ *   --app-surface-elevated, --app-border, --app-text-muted, --app-text
+ *
+ * Add class="app-root" to your root element for these styles to apply.
+ */
+
+/* ===== AppBtn - pill/rounded buttons (overrides Element Plus) ===== */
+.app-root .el-button.app-btn {
+  font-weight: 500 !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 9999px !important;
+  border: none !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+  letter-spacing: 0.01em;
+}
+.app-root .el-button.app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgb(16 185 129 / 0.2);
+}
+.app-root .el-button.app-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+.app-root .el-button.app-btn--small {
+  padding: 0.4rem 0.875rem !important;
+  font-size: 0.8125rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+.app-root .el-button.app-btn--default {
+  padding: 0.5rem 1.125rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+.app-root .el-button.app-btn--large {
+  padding: 0.75rem 1.5rem !important;
+  font-size: 1rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+
+.app-root .el-button.app-btn--primary {
+  background: linear-gradient(135deg, var(--app-accent, #059669) 0%, var(--app-accent-hover, #10b981) 100%) !important;
+  border: none !important;
+  color: white !important;
+}
+.app-root .el-button.app-btn--primary:hover {
+  background: linear-gradient(135deg, var(--app-accent-hover, #10b981) 0%, var(--app-accent, #059669) 100%) !important;
+  box-shadow: 0 6px 16px rgb(16 185 129 / 0.35);
+}
+.app-root .el-button.app-btn--primary.app-btn--plain {
+  background: transparent !important;
+  color: var(--app-accent, #059669) !important;
+  border: 2px solid var(--app-accent, #059669) !important;
+  box-shadow: none !important;
+}
+.app-root .el-button.app-btn--primary.app-btn--plain:hover {
+  background-color: rgb(16 185 129 / 0.08) !important;
+  box-shadow: 0 2px 8px rgb(16 185 129 / 0.15);
+}
+
+.app-root .el-button.app-btn--secondary {
+  background-color: var(--app-surface-elevated, #f8fafc) !important;
+  border: 2px solid var(--app-border, #e2e8f0) !important;
+  color: var(--app-text-muted, #64748b) !important;
+}
+.app-root .el-button.app-btn--secondary:hover {
+  border-color: var(--app-accent, #059669) !important;
+  color: var(--app-accent, #059669) !important;
+  background-color: rgb(16 185 129 / 0.06) !important;
+  box-shadow: 0 4px 12px rgb(16 185 129 / 0.12);
+}
+.app-root .el-button.app-btn--secondary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.app-root .el-button.app-btn--success {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
+  border: none !important;
+}
+.app-root .el-button.app-btn--success:hover {
+  background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
+  box-shadow: 0 6px 16px rgb(5 150 105 / 0.35);
+}
+.app-root .el-button.app-btn--success.app-btn--plain {
+  background: transparent !important;
+  border: 2px solid #059669 !important;
+}
+.app-root .el-button.app-btn--success.app-btn--plain:hover {
+  background-color: rgb(5 150 105 / 0.08) !important;
+}
+
+.app-root .el-button.app-btn--danger {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%) !important;
+  border: none !important;
+}
+.app-root .el-button.app-btn--danger:hover {
+  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%) !important;
+  box-shadow: 0 6px 16px rgb(220 38 38 / 0.35);
+}
+.app-root .el-button.app-btn--danger.app-btn--plain {
+  background: transparent !important;
+  color: #ef4444 !important;
+  border: 2px solid #ef4444 !important;
+}
+.app-root .el-button.app-btn--danger.app-btn--plain:hover {
+  background-color: rgb(239 68 68 / 0.08) !important;
+}
+
+.app-root .el-button.app-btn--ghost {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: var(--app-text-muted, #64748b) !important;
+}
+.app-root .el-button.app-btn--ghost:hover {
+  background-color: var(--app-surface-elevated, #f8fafc) !important;
+  color: var(--app-text, #0f172a) !important;
+}
+
+.app-root .el-button.app-btn--block {
+  width: 100%;
+}

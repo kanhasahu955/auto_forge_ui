@@ -3,7 +3,7 @@
  * HackerRank/LeetCode-style progress with level, time, steps
  */
 
-import type { Difficulty } from './useProblems'
+import type { Difficulty } from '~/composables/useProblems'
 
 const STORAGE_KEY_PREFIX = 'interview-agent-progress'
 

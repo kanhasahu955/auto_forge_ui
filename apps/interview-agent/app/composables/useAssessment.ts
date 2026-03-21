@@ -3,8 +3,8 @@
  * Mock for now - will integrate with backend
  */
 
-import type { Problem } from './useProblems'
-import { MOCK_PROBLEMS } from './useProblems'
+import type { Problem } from '~/composables/useProblems'
+import { MOCK_PROBLEMS } from '~/composables/useProblems'
 
 export type AssessmentState = {
   id: string

@@ -1,17 +1,13 @@
 <script setup lang="ts">
-// @ts-nocheck
-
-
-const slots = useSlots()
-const slotNamesList = Object.keys(slots ?? {})
-function slotBind(data) {
-  return data && typeof data === 'object' && !Array.isArray(data) ? data : {}
-}
+/**
+ * Reusable tag/badge - forwards all Element Plus el-tag props.
+ * Use type, size, effect, etc. for theming.
+ * Customize via :root CSS variables or el-tag's built-in props.
+ */
+defineOptions({ inheritAttrs: false })
 </script>
 <template>
   <el-tag v-bind="$attrs">
-    <template v-for="name in slotNamesList" :key="name" #[name]="slotData">
-      <slot :name="name" v-bind="slotBind(slotData)" />
-    </template>
+    <slot />
   </el-tag>
 </template>

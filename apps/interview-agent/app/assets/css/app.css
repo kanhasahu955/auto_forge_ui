@@ -305,121 +305,139 @@ body {
   overflow-wrap: break-word;
 }
 
-/* ===== Reusable AppBtn - modern pill/rounded buttons ===== */
-.app-btn {
+/* ===== Hero buttons (links styled as buttons - no nesting) ===== */
+.app-root .hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  font-size: 0.9375rem;
   font-weight: 500;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 9999px; /* pill-shaped */
-  border: none;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
-  letter-spacing: 0.01em;
+  text-decoration: none;
+  border-radius: 0.75rem;
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
-.app-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgb(16 185 129 / 0.2);
+.app-root .hero-btn--primary {
+  background: var(--app-accent);
+  border-color: var(--app-accent);
+  color: white;
 }
-.app-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+.app-root .hero-btn--primary:hover {
+  background: var(--app-accent-hover);
+  border-color: var(--app-accent-hover);
+  color: white;
 }
-.app-btn--small {
-  padding: 0.4rem 0.875rem;
-  font-size: 0.8125rem;
-  border-radius: 9999px;
+.app-root .hero-btn--secondary {
+  background: var(--app-surface);
+  border-color: var(--app-border);
+  color: var(--app-text);
 }
-.app-btn--default {
-  padding: 0.5rem 1.125rem;
-}
-.app-btn--large {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 9999px;
+.app-root .hero-btn--secondary:hover {
+  border-color: var(--app-accent);
+  color: var(--app-accent);
+  background: rgb(5 150 105 / 0.06);
 }
 
-/* Primary - accent fill */
-.app-btn--primary {
-  background: linear-gradient(135deg, var(--app-accent) 0%, var(--app-accent-hover) 100%) !important;
-  border: none !important;
+/* ===== AppBtn - clean, minimal buttons ===== */
+.app-root .el-button.app-btn {
+  font-weight: 500 !important;
+  transition: background 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s;
+  border-radius: 0.75rem !important;
+  border: 1px solid transparent !important;
+  letter-spacing: 0.01em;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 0.5rem !important;
+  text-decoration: none !important;
+}
+.app-root .el-button.app-btn > * {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: inherit !important;
+}
+.app-root .el-button.app-btn:hover {
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.08);
+}
+.app-root .el-button.app-btn:active {
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.06);
+}
+.app-root .el-button.app-btn--small {
+  padding: 0.375rem 0.875rem !important;
+  font-size: 0.8125rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+.app-root .el-button.app-btn--default {
+  padding: 0.5rem 1rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+.app-root .el-button.app-btn--large {
+  padding: 0.625rem 1.25rem !important;
+  font-size: 0.9375rem !important;
+  min-height: auto !important;
+  height: auto !important;
+}
+.app-root .el-button.app-btn--primary {
+  background: var(--app-accent) !important;
+  border-color: var(--app-accent) !important;
   color: white !important;
 }
-.app-btn--primary:hover {
-  background: linear-gradient(135deg, var(--app-accent-hover) 0%, var(--app-accent) 100%) !important;
-  box-shadow: 0 6px 16px rgb(16 185 129 / 0.35);
+.app-root .el-button.app-btn--primary:hover {
+  background: var(--app-accent-hover) !important;
+  border-color: var(--app-accent-hover) !important;
+  color: white !important;
 }
-.app-btn--primary.app-btn--plain {
+.app-root .el-button.app-btn--primary.app-btn--plain {
   background: transparent !important;
   color: var(--app-accent) !important;
-  border: 2px solid var(--app-accent) !important;
-  box-shadow: none !important;
+  border-color: var(--app-accent) !important;
 }
-.app-btn--primary.app-btn--plain:hover {
-  background-color: rgb(16 185 129 / 0.08) !important;
-  box-shadow: 0 2px 8px rgb(16 185 129 / 0.15);
+.app-root .el-button.app-btn--primary.app-btn--plain:hover {
+  background: rgb(5 150 105 / 0.08) !important;
+  color: var(--app-accent-hover) !important;
 }
-
-/* Secondary - outline */
-.app-btn--secondary {
-  background-color: var(--app-surface-elevated) !important;
-  border: 2px solid var(--app-border) !important;
-  color: var(--app-text-muted) !important;
+.app-root .el-button.app-btn--secondary {
+  background: var(--app-surface) !important;
+  border-color: var(--app-border) !important;
+  color: var(--app-text) !important;
 }
-.app-btn--secondary:hover {
+.app-root .el-button.app-btn--secondary:hover {
   border-color: var(--app-accent) !important;
   color: var(--app-accent) !important;
-  background-color: rgb(16 185 129 / 0.06) !important;
-  box-shadow: 0 4px 12px rgb(16 185 129 / 0.12);
+  background: rgb(5 150 105 / 0.06) !important;
 }
-.app-btn--secondary:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+.app-root .el-button.app-btn--success {
+  background: #059669 !important;
+  border-color: #059669 !important;
+  color: white !important;
 }
-
-/* Success */
-.app-btn--success {
-  background: linear-gradient(135deg, #059669 0%, #10b981 100%) !important;
-  border: none !important;
+.app-root .el-button.app-btn--success:hover {
+  background: #047857 !important;
+  border-color: #047857 !important;
 }
-.app-btn--success:hover {
-  background: linear-gradient(135deg, #10b981 0%, #34d399 100%) !important;
-  box-shadow: 0 6px 16px rgb(5 150 105 / 0.35);
+.app-root .el-button.app-btn--danger {
+  background: #dc2626 !important;
+  border-color: #dc2626 !important;
+  color: white !important;
 }
-.app-btn--success.app-btn--plain {
+.app-root .el-button.app-btn--danger:hover {
+  background: #b91c1c !important;
+  border-color: #b91c1c !important;
+}
+.app-root .el-button.app-btn--ghost {
   background: transparent !important;
-  border: 2px solid #059669 !important;
-}
-.app-btn--success.app-btn--plain:hover {
-  background-color: rgb(5 150 105 / 0.08) !important;
-}
-
-/* Danger */
-.app-btn--danger {
-  background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%) !important;
-  border: none !important;
-}
-.app-btn--danger:hover {
-  background: linear-gradient(135deg, #ef4444 0%, #f87171 100%) !important;
-  box-shadow: 0 6px 16px rgb(220 38 38 / 0.35);
-}
-.app-btn--danger.app-btn--plain {
-  background: transparent !important;
-  color: #ef4444 !important;
-  border: 2px solid #ef4444 !important;
-}
-.app-btn--danger.app-btn--plain:hover {
-  background-color: rgb(239 68 68 / 0.08) !important;
-}
-
-/* Ghost - minimal */
-.app-btn--ghost {
-  background-color: transparent !important;
   border-color: transparent !important;
   color: var(--app-text-muted) !important;
 }
-.app-btn--ghost:hover {
-  background-color: var(--app-surface-elevated) !important;
+.app-root .el-button.app-btn--ghost:hover {
+  background: var(--app-surface-elevated) !important;
   color: var(--app-text) !important;
 }
-
-.app-btn--block {
+.app-root .el-button.app-btn--block {
   width: 100%;
 }
+

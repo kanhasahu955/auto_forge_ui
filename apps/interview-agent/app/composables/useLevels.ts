@@ -3,7 +3,7 @@
  * Level 1 always unlocked; Level N unlocks when all problems in levels 1..N-1 are solved
  */
 
-import type { Problem } from './useProblems'
+import type { Problem } from '~/composables/useProblems'
 
 export function useLevels() {
   const { problems } = useProblems()

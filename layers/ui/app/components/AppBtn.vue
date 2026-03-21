@@ -1,12 +1,18 @@
 <script setup lang="ts">
 /**
- * Reusable themed button - wraps Element Plus el-button with app-specific styling.
- * Variants: primary | secondary | success | danger | ghost
+ * Reusable themed button - customizable via props and CSS variables.
+ *
+ * Variants: primary | secondary | success | danger | ghost | outline
  * Sizes: small | default | large
+ *
+ * Theming: Set --app-accent, --app-accent-hover in :root to customize.
+ * Add class="app-root" to your root element for styles to apply.
  */
+defineOptions({ inheritAttrs: false })
+
 const props = withDefaults(
   defineProps<{
-    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'ghost'
+    variant?: 'primary' | 'secondary' | 'success' | 'danger' | 'ghost' | 'outline'
     size?: 'small' | 'default' | 'large'
     plain?: boolean
     round?: boolean
@@ -14,6 +20,8 @@ const props = withDefaults(
     loading?: boolean
     disabled?: boolean
     block?: boolean
+    /** Custom class for app-specific overrides */
+    customClass?: string
   }>(),
   {
     variant: 'primary',
@@ -35,14 +43,19 @@ const elType = computed(() => {
 })
 
 const isPlain = computed(() =>
-  props.variant === 'secondary' || props.variant === 'ghost' || props.plain
+  props.variant === 'secondary' || props.variant === 'ghost' || props.variant === 'outline' || props.plain
+)
+
+const resolvedVariant = computed(() =>
+  props.variant === 'outline' ? 'secondary' : props.variant
 )
 
 const buttonClass = computed(() => [
   'app-btn',
-  `app-btn--${props.variant}`,
+  `app-btn--${resolvedVariant}`,
   `app-btn--${props.size}`,
   { 'app-btn--block': props.block },
+  props.customClass,
 ])
 </script>
 

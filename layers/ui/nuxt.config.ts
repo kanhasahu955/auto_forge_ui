@@ -1,5 +1,9 @@
-// Shared UI components layer
-// Components in app/components/ must be explicitly registered (layer uses app/ subdir)
+// Shared UI components layer - customizable via CSS variables
+import { fileURLToPath } from 'node:url'
+import { join, dirname } from 'node:path'
+
+const _layerDir = dirname(fileURLToPath(import.meta.url))
+
 export default defineNuxtConfig({
   components: [
     {
@@ -7,4 +11,5 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  css: [join(_layerDir, 'app/assets/css/components.css')],
 })

@@ -21,17 +21,19 @@
               Solve algorithmic challenges, track your progress, and ace your next technical interview.
             </p>
             <div class="flex flex-wrap gap-4">
-              <NuxtLink to="/problems/two-sum">
-                <AppBtn variant="primary" size="large" class="!rounded-2xl shadow-xl shadow-emerald-500/20">
-                  <Play class="w-5 h-5 mr-2" />
-                  Start with Two Sum
-                </AppBtn>
+              <NuxtLink
+                to="/problems/two-sum"
+                class="hero-btn hero-btn--primary"
+              >
+                <Play class="w-5 h-5 shrink-0" />
+                Start with Two Sum
               </NuxtLink>
-              <NuxtLink to="/assessment">
-                <AppBtn variant="secondary" size="large" class="!rounded-2xl border-2">
-                  <Timer class="w-5 h-5 mr-2" />
-                  Timed Assessment
-                </AppBtn>
+              <NuxtLink
+                to="/assessment"
+                class="hero-btn hero-btn--secondary"
+              >
+                <Timer class="w-5 h-5 shrink-0" />
+                Timed Assessment
               </NuxtLink>
             </div>
           </div>

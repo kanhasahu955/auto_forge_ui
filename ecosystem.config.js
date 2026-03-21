@@ -1,0 +1,28 @@
+// PM2 config for bare-metal deployment (when NOT using Docker)
+// Each app runs on its own port; use nginx to route /interview-agent → port 3001
+const path = require('path')
+
+module.exports = {
+  apps: [
+    {
+      name: 'AutoForge',
+      script: '.output/server/index.mjs',
+      cwd: path.join(__dirname, 'apps/AutoForge'),
+      instances: 'max',
+      exec_mode: 'cluster',
+      env: { NODE_ENV: 'production', PORT: 3000 },
+      error_file: 'logs/autoforge-error.log',
+      out_file: 'logs/autoforge-out.log',
+    },
+    {
+      name: 'interview-agent',
+      script: '.output/server/index.mjs',
+      cwd: path.join(__dirname, 'apps/interview-agent'),
+      instances: 'max',
+      exec_mode: 'cluster',
+      env: { NODE_ENV: 'production', PORT: 3001 },
+      error_file: 'logs/interview-agent-error.log',
+      out_file: 'logs/interview-agent-out.log',
+    },
+  ],
+}

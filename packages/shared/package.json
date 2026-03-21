@@ -1,0 +1,20 @@
+{
+  "name": "@nuxt-mfe/shared",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "axios": "^1.13.6",
+    "graphql": "^16.9.0",
+    "graphql-request": "^7.1.2",
+    "lodash-es": "^4.17.21"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./config": "./config.ts",
+    "./api": "./api.ts",
+    "./sample-api": "./sample-api.ts",
+    "./graphql": "./graphql.ts",
+    "./lodash": "./lodash.ts",
+    "./routing": "./routing.ts"
+  }
+}

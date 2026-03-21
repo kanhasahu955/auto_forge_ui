@@ -1,0 +1,46 @@
+{
+  "name": "nuxt-mfe-platform",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "cz",
+    "version:patch": "npm version patch --no-git-tag-version",
+    "version:minor": "npm version minor --no-git-tag-version",
+    "version:major": "npm version major --no-git-tag-version",
+    "dev": "concurrently -n autoforge,interview-agent -c blue,green \"pnpm --filter AutoForge dev\" \"pnpm --filter interview-agent dev\"",
+    "dev:AutoForge": "pnpm --filter AutoForge dev",
+    "dev:interview-agent": "pnpm --filter interview-agent dev",
+    "dev:all": "pnpm dev",
+    "build": "pnpm -r build",
+    "build:AutoForge": "pnpm --filter AutoForge build",
+    "build:interview-agent": "pnpm --filter interview-agent build",
+    "preview": "pnpm build && pnpm pm2:start",
+    "docker:build": "docker compose build",
+    "docker:start": "docker compose up -d",
+    "docker:stop": "docker compose down",
+    "docker:logs": "docker compose logs -f",
+    "pm2:start": "mkdir -p logs && pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop ecosystem.config.js",
+    "pm2:restart": "pm2 restart ecosystem.config.js",
+    "pm2:logs": "pm2 logs",
+    "pm2:status": "pm2 status",
+    "deploy": "bash scripts/deploy.sh",
+    "deploy:docker": "bash scripts/deploy-docker.sh",
+    "release": "bash scripts/release.sh",
+    "ci": "pnpm install && pnpm build"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.6.0",
+    "@commitlint/config-conventional": "^19.6.0",
+    "commitizen": "^4.3.1",
+    "concurrently": "^9.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^9.1.7"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}

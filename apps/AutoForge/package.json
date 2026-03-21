@@ -10,13 +10,15 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@pinia/nuxt": "^0.11.3",
     "@tailwindcss/vite": "^4.2.2",
+    "@pinia/nuxt": "^0.11.3",
     "@vueuse/core": "^14.2.1",
     "@vueuse/motion": "^3.0.3",
     "axios": "^1.13.6",
     "dayjs": "^1.11.20",
     "lucide-vue-next": "^0.577.0",
+    "monaco-editor": "^0.55.1",
+    "nuxt-monaco-editor": "^1.4.0",
     "nuxt": "^4.4.2",
     "pinia": "^3.0.4",
     "tailwindcss": "^4.2.2",

@@ -2,7 +2,7 @@
   <div v-if="problem && !canAccess" class="min-h-[60vh] flex items-center justify-center p-8">
     <AppResult icon="info" title="Level locked" :sub-title="`Complete the previous level to unlock this problem.`">
       <template #extra>
-        <NuxtLink to="/">
+        <NuxtLink to="/dsa">
           <AppBtn variant="primary">
             <ArrowLeft class="w-4 h-4 mr-2" />
             Back to Problems
@@ -34,7 +34,7 @@
     <div class="problem-header flex flex-col sm:flex-row sm:items-center justify-between gap-3 px-4 sm:px-6 py-4 border-b border-[var(--app-border)] bg-gradient-to-r from-[var(--app-surface)] to-[var(--app-surface-elevated)] shrink-0">
       <div class="flex flex-wrap items-center gap-3 sm:gap-4">
         <NuxtLink
-          to="/"
+          to="/dsa"
           class="flex items-center gap-1.5 text-app-muted hover:text-[var(--app-accent)] text-sm font-medium transition-all hover:gap-2"
         >
           <ArrowLeft class="w-4 h-4" />
@@ -107,7 +107,7 @@
           <NuxtLink
             v-for="(p, i) in assignmentProblems"
             :key="p.slug"
-            :to="`/problems/${p.slug}`"
+            :to="`/dsa/problems/${p.slug}`"
             class="block px-3 py-2.5 text-sm transition-colors"
             :class="p.slug === problem?.slug
               ? 'bg-[var(--app-accent)]/15 text-[var(--app-accent)] font-medium border-l-2 border-l-[var(--app-accent)]'
@@ -247,7 +247,7 @@
   <div v-else class="min-h-[60vh] flex items-center justify-center p-8">
     <AppResult icon="warning" title="Problem not found" sub-title="The problem you're looking for doesn't exist.">
       <template #extra>
-        <NuxtLink to="/">
+        <NuxtLink to="/dsa">
           <AppBtn variant="primary">
             <ArrowLeft class="w-4 h-4 mr-2" />
             Back to Problems
@@ -275,7 +275,7 @@ const assessment = useAssessment()
 
 const assignmentProblems = computed(() => assessment.state?.value?.problems ?? [])
 
-const SPLIT_STORAGE_KEY = 'interview-agent-problem-split'
+const SPLIT_STORAGE_KEY = 'autoforge-problem-split'
 const MIN_PROBLEM_PCT = 25
 const MAX_PROBLEM_PCT = 60
 const DEFAULT_PROBLEM_PCT = 38
@@ -503,11 +503,11 @@ function goToNextProblem() {
       const idx = stateVal.problems.findIndex((p) => p.slug === next.slug)
       if (idx >= 0) stateVal.currentIndex = idx
     }
-    router.replace(`/problems/${next.slug}`)
+    router.replace(`/dsa/problems/${next.slug}`)
   } else if (allCompleted.value) {
-    router.replace('/dashboard')
+    router.replace('/dsa/dashboard')
   } else {
-    router.replace('/')
+    router.replace('/dsa')
   }
 }
 
@@ -532,7 +532,7 @@ function submitCode() {
     isSubmitting.value = false
     await nextTick()
     if (allCompleted.value) {
-      router.replace('/dashboard')
+      router.replace('/dsa/dashboard')
     } else {
       goToNextProblem()
     }

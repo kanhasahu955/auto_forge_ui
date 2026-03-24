@@ -32,10 +32,14 @@ export default defineNuxtConfig({
   runtimeConfig: {
     apiSecret: '',
     apiBase: '',
+    authApiBase: '',
+    orgApiBase: '',
     graphqlEndpoint: '',
     sampleApiBase: '',
     public: {
       apiBase: '',
+      authApiBase: '',
+      orgApiBase: '',
       graphqlEndpoint: '',
       sampleApiBase: '',
       appName: 'App',

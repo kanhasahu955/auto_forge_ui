@@ -34,7 +34,7 @@ export function createApiClient(
 
   const client = axios.create({
     baseURL: baseURL.replace(/\/$/, ''),
-    timeout: 30000,
+    timeout: 60000,
     headers: {
       'Content-Type': 'application/json',
       ...axiosConfig.headers,

@@ -145,6 +145,7 @@
 
 <script setup lang="ts">
 import { CloudOff, Trophy, Timer, Library, CheckCircle2, CircleDot, Hash, Percent, LayoutDashboard } from 'lucide-vue-next'
+import { useAuth } from '#base/composables/useAuth'
 
 const { isLoggedIn, user } = useAuth()
 const { problems } = useProblems()

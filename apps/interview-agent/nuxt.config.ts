@@ -48,6 +48,7 @@ export default defineNuxtConfig({
     graphqlEndpoint: process.env.NUXT_GRAPHQL_ENDPOINT,
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      authApiBase: process.env.NUXT_PUBLIC_AUTH_API_BASE || 'http://localhost:8001',
       graphqlEndpoint: process.env.NUXT_PUBLIC_GRAPHQL_ENDPOINT,
       sampleApiBase: process.env.NUXT_PUBLIC_SAMPLE_API_BASE,
       appName: 'Interview Agent',

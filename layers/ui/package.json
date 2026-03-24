@@ -1,5 +1,8 @@
 {
   "name": "ui-layer",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "lucide-vue-next": "^0.577.0"
+  }
 }

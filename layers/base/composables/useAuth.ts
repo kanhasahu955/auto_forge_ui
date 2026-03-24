@@ -1,12 +1,12 @@
 /**
- * Auth from parent app - reads auth-token cookie set by main app
- * User credentials come from parent; no login page in interview-agent
+ * Auth composable - login, register, logout, user state
+ * Uses auth-token cookie. AutoForge (shell) has login/register pages.
  */
-
 export type AuthUser = {
   id: string
   name: string
   email: string
+  role?: string
 }
 
 function hashToken(token: string): string {
@@ -31,7 +31,11 @@ function decodeJwtPayload(token: string): Record<string, unknown> | null {
 }
 
 export function useAuth() {
-  const tokenCookie = useCookie<string | null>('auth-token')
+  const tokenCookie = useCookie<string | null>('auth-token', {
+    maxAge: 60 * 60 * 24 * 7, // 7 days
+    sameSite: 'lax',
+    path: '/',
+  })
 
   const user = computed<AuthUser | null>(() => {
     const token = tokenCookie.value
@@ -41,14 +45,26 @@ export function useAuth() {
     const payload = decodeJwtPayload(token)
     const name = (payload?.name as string) ?? (payload?.username as string) ?? (payload?.email as string) ?? 'User'
     const email = (payload?.email as string) ?? ''
+    const role = (payload?.role as string) ?? (payload?.role_id as string)
 
-    return { id, name, email }
+    return { id, name, email, role }
   })
 
-  const isLoggedIn = computed(() => !!user.value)
+  const isLoggedIn = computed(() => !!tokenCookie.value && !!user.value)
+
+  const setToken = (token: string | null) => {
+    tokenCookie.value = token
+  }
+
+  const logout = () => {
+    tokenCookie.value = null
+  }
 
   return {
     user,
     isLoggedIn,
+    tokenCookie,
+    setToken,
+    logout,
   }
 }

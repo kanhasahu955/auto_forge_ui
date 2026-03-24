@@ -8,6 +8,8 @@ WORKDIR /app
 COPY pnpm-workspace.yaml pnpm-lock.yaml* package.json ./
 COPY apps/AutoForge/package.json apps/AutoForge/
 COPY apps/interview-agent/package.json apps/interview-agent/
+COPY apps/auth-mfe/package.json apps/auth-mfe/
+COPY apps/org-mfe/package.json apps/org-mfe/
 COPY layers/ layers/
 COPY packages/ packages/
 RUN pnpm install

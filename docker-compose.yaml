@@ -10,6 +10,8 @@ services:
     depends_on:
       - autoforge
       - interview-agent
+      - auth-mfe
+      - org-mfe
   autoforge:
     build:
       context: .
@@ -21,4 +23,16 @@ services:
       context: .
       dockerfile: docker/Dockerfile.interview-agent
     container_name: interview-agent
+    restart: unless-stopped
+  auth-mfe:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.auth-mfe
+    container_name: auth-mfe
+    restart: unless-stopped
+  org-mfe:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.org-mfe
+    container_name: org-mfe
     restart: unless-stopped

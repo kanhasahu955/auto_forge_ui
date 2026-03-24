@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Org header - light/dark */
+.org-header {
+  background: rgba(255 255 255 / 0.9);
+  border-color: var(--app-border);
+}
+
+.dark .org-header {
+  background: rgba(15 23 42 / 0.9);
+  border-color: var(--app-border);
+}
+
+/* ===== Org MFE - Refined design overrides ===== */
+.org-page,
+.org-detail {
+  background: var(--org-bg, var(--app-bg));
+  min-height: 100%;
+}
+
+/* Softer, warmer light mode for org-mfe */
+.app-root.org-mfe-root {
+  --org-bg: #f8fafc;
+  --org-surface: #ffffff;
+  --org-card-shadow: 0 1px 3px rgb(0 0 0 / 0.04);
+  --org-card-shadow-hover: 0 12px 40px -12px rgb(5 150 105 / 0.2), 0 0 0 1px rgb(5 150 105 / 0.08);
+}
+
+.dark .app-root.org-mfe-root {
+  --org-bg: #0f172a;
+  --org-surface: #1e293b;
+  --org-card-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+  --org-card-shadow-hover: 0 12px 40px -12px rgb(52 211 153 / 0.15), 0 0 0 1px rgb(52 211 153 / 0.15);
+}
+
+/* Org cards - premium feel */
+.org-card {
+  cursor: pointer;
+  transition: all 0.25s ease !important;
+  box-shadow: var(--org-card-shadow) !important;
+  border: 1px solid var(--app-border) !important;
+}
+
+.org-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--org-card-shadow-hover) !important;
+  border-color: var(--app-accent) !important;
+}
+
+/* Stat cards */
+.org-stat-card {
+  background: var(--org-surface, var(--app-surface)) !important;
+  box-shadow: var(--org-card-shadow) !important;
+  transition: all 0.25s ease !important;
+  border: 1px solid var(--app-border) !important;
+}
+
+.org-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -8px rgb(5 150 105 / 0.12) !important;
+  border-color: rgb(5 150 105 / 0.3) !important;
+}
+
+.dark .org-stat-card:hover {
+  box-shadow: 0 8px 24px -8px rgb(52 211 153 / 0.2) !important;
+  border-color: rgb(52 211 153 / 0.3) !important;
+}
+
+/* Section cards - clean interiors */
+.org-section-card .el-card__body {
+  padding: 1.25rem 1.5rem !important;
+}
+
+.org-list-item {
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.625rem !important;
+  transition: background 0.2s;
+}
+
+.org-list-item:hover {
+  background: var(--app-surface-elevated) !important;
+}
+
+/* Empty state */
+.org-empty-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgb(5 150 105 / 0.12) 0%, rgb(5 150 105 / 0.06) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  margin: 0 auto 1rem;
+}
+
+.dark .org-empty-icon {
+  background: linear-gradient(135deg, rgb(52 211 153 / 0.15) 0%, rgb(52 211 153 / 0.08) 100%);
+}

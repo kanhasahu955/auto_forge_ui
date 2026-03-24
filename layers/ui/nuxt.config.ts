@@ -11,5 +11,8 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
-  css: [join(_layerDir, 'app/assets/css/components.css')],
+  css: [
+    join(_layerDir, 'app/assets/css/theme.css'),
+    join(_layerDir, 'app/assets/css/components.css'),
+  ],
 })

@@ -1,11 +1,24 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { fileURLToPath } from 'node:url'
+import { join, dirname } from 'node:path'
 import tailwindcss from '@tailwindcss/vite'
 
+const _root = dirname(fileURLToPath(import.meta.url))
+
 export default defineNuxtConfig({
+  alias: {
+    '#base': join(_root, '../../layers/base'),
+  },
   modules: ['nuxt-monaco-editor'],
   css: ['~/assets/css/app.css'],
   vite: {
     plugins: [tailwindcss()],
+    server: {
+      proxy: {
+        '/auth': { target: 'http://localhost:3002', changeOrigin: true },
+        '/api/v1/auth': { target: 'http://localhost:8001', changeOrigin: true },
+      },
+    },
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
@@ -40,7 +53,9 @@ export default defineNuxtConfig({
     apiSecret: process.env.NUXT_API_SECRET,
     graphqlEndpoint: process.env.NUXT_GRAPHQL_ENDPOINT,
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8000',
+      authApiBase: process.env.NUXT_PUBLIC_AUTH_API_BASE || 'http://localhost:8001',
+      orgApiBase: process.env.NUXT_PUBLIC_ORG_API_BASE || 'http://localhost:8007',
       graphqlEndpoint: process.env.NUXT_PUBLIC_GRAPHQL_ENDPOINT,
       sampleApiBase: process.env.NUXT_PUBLIC_SAMPLE_API_BASE,
       appName: 'AutoForge',

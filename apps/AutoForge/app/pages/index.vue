@@ -1,97 +1,43 @@
 <template>
   <div class="px-4 sm:px-6 lg:px-8 py-8 sm:py-16 max-w-7xl mx-auto min-h-[80vh]">
-    <!-- Hero -->
-    <div class="hero-section overflow-hidden rounded-3xl border border-[var(--app-border)] bg-[var(--app-surface)] relative mb-12">
-      <div class="absolute top-0 right-0 w-96 h-96 rounded-full bg-emerald-500/10 blur-[120px] pointer-events-none" />
-      <div class="absolute bottom-0 left-1/4 w-72 h-72 rounded-full bg-cyan-500/8 blur-[100px] pointer-events-none" />
-      <div class="relative p-8 sm:p-10 lg:p-14">
-        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-[var(--app-accent)]/15 text-[var(--app-accent)] w-fit mb-6">
-          <Sparkles class="w-4 h-4" />
-          Your career acceleration platform
-        </span>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-app mb-6 leading-[1.1] tracking-tight">
-          Practice. Interview. Land.
-          <span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500">
-            All in one place
-          </span>
-        </h1>
-        <p class="text-app-muted text-base sm:text-lg max-w-2xl mb-10 leading-relaxed">
-          Master DSA problems, ace technical interviews, and build a standout resume. AutoForge equips you with everything to crack your dream role.
-        </p>
-      </div>
+    <div class="rounded-3xl border border-gray-200 bg-white p-10 mb-12 shadow-sm">
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+        Practice. Interview. Land.
+      </h1>
+      <p class="text-gray-600 text-lg max-w-2xl mb-8">
+        Master DSA problems, ace technical interviews, and build a standout resume.
+      </p>
     </div>
-
-    <!-- Service cards -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-      <NuxtLink
-        to="/dsa"
-        class="service-card group block p-8 rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface)] hover:border-[var(--app-accent)] shadow-sm"
-      >
-        <span class="flex items-center justify-center w-16 h-16 rounded-2xl bg-emerald-500/15 text-emerald-500 mb-6 group-hover:scale-110 transition-transform">
-          <Code2 class="w-8 h-8" />
-        </span>
-        <h2 class="text-xl font-bold text-app mb-3">DSA Practice</h2>
-        <p class="text-app-muted text-sm sm:text-base leading-relaxed mb-4">
-          LeetCode-style problems with live coding, run code in browser, and track progress. Level-based unlocks and timed assessments.
-        </p>
-        <span class="inline-flex items-center gap-2 text-[var(--app-accent)] font-medium text-sm">
-          Start practicing
-          <ChevronRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </span>
+    <div class="grid md:grid-cols-3 gap-6">
+      <NuxtLink to="/dsa" class="block p-8 rounded-2xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">DSA Practice</h2>
+        <p class="text-gray-600 text-sm mb-4">LeetCode-style problems with live coding.</p>
+        <span class="text-emerald-600 font-medium text-sm">Start practicing →</span>
       </NuxtLink>
-
-      <NuxtLink
-        to="/interview"
-        class="service-card group block p-8 rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface)] hover:border-[var(--app-accent)] shadow-sm"
-      >
-        <span class="flex items-center justify-center w-16 h-16 rounded-2xl bg-amber-500/15 text-amber-500 mb-6 group-hover:scale-110 transition-transform">
-          <Mic class="w-8 h-8" />
-        </span>
-        <h2 class="text-xl font-bold text-app mb-3">Technical Interview</h2>
-        <p class="text-app-muted text-sm sm:text-base leading-relaxed mb-4">
-          AI-powered mock interviews. Practice system design, coding rounds, and behavioral questions.
-        </p>
-        <span class="inline-flex items-center gap-2 text-[var(--app-accent)] font-medium text-sm">
-          Coming soon
-          <ChevronRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </span>
+      <NuxtLink to="/interview" class="block p-8 rounded-2xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Technical Interview</h2>
+        <p class="text-gray-600 text-sm mb-4">AI-powered mock interviews.</p>
+        <span class="text-emerald-600 font-medium text-sm">Create room →</span>
       </NuxtLink>
-
-      <NuxtLink
-        to="/resume"
-        class="service-card group block p-8 rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface)] hover:border-[var(--app-accent)] shadow-sm"
-      >
-        <span class="flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-500/15 text-blue-500 mb-6 group-hover:scale-110 transition-transform">
-          <FileText class="w-8 h-8" />
-        </span>
-        <h2 class="text-xl font-bold text-app mb-3">Resume Builder</h2>
-        <p class="text-app-muted text-sm sm:text-base leading-relaxed mb-4">
-          Create ATS-friendly resumes with smart templates. Highlight your projects and achievements effectively.
-        </p>
-        <span class="inline-flex items-center gap-2 text-[var(--app-accent)] font-medium text-sm">
-          Coming soon
-          <ChevronRight class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </span>
+      <NuxtLink to="/resume" class="block p-8 rounded-2xl border border-gray-200 bg-white hover:border-emerald-500 hover:shadow-md transition-all">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Resume Builder</h2>
+        <p class="text-gray-600 text-sm mb-4">Create ATS-friendly resumes.</p>
+        <span class="text-emerald-600 font-medium text-sm">Build resume →</span>
       </NuxtLink>
     </div>
-
-    <!-- Quick stats / CTA -->
-    <div class="mt-14 p-8 rounded-2xl border border-[var(--app-border)] bg-gradient-to-br from-emerald-500/5 to-cyan-500/5 text-center">
-      <p class="text-app-muted text-sm sm:text-base mb-4">Get started in seconds. No sign-up required for DSA practice.</p>
+    <div class="mt-14 p-8 rounded-2xl border border-gray-200 bg-gray-50 text-center">
+      <p class="text-gray-600 mb-4">Get started in seconds.</p>
       <div class="flex flex-wrap justify-center gap-4">
-        <NuxtLink to="/dsa" class="hero-btn hero-btn--primary">
-          <Play class="w-5 h-5 shrink-0" />
-          Browse DSA Problems
-        </NuxtLink>
-        <NuxtLink to="/dsa/assessment" class="hero-btn hero-btn--secondary">
-          <Timer class="w-5 h-5 shrink-0" />
-          Timed Assessment
-        </NuxtLink>
+        <NuxtLink to="/dsa" class="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-medium hover:bg-emerald-700">Browse DSA</NuxtLink>
+        <NuxtLink to="/dsa/assessment" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-medium hover:border-emerald-500">Assessment</NuxtLink>
+        <NuxtLink to="/interview" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-medium hover:border-emerald-500">Interview</NuxtLink>
+        <NuxtLink to="/contests" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-medium hover:border-emerald-500">Contests</NuxtLink>
+        <NuxtLink to="/leaderboard" class="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-medium hover:border-emerald-500">Leaderboard</NuxtLink>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { Sparkles, Code2, Mic, FileText, ChevronRight, Play, Timer } from 'lucide-vue-next'
+// Minimal - no composables or icon imports
 </script>
